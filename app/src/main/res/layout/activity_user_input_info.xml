@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Name_edit_text"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#062925"
@@ -22,11 +23,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Income_text"
-        android:layout_width="0dp"
+        android:id="@+id/Budget_Name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="93dp"
-        android:text="Income:"
+        android:layout_marginTop="56dp"
+        android:text="Name:"
         android:textColor="#B8E1DD"
         android:textSize="48sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,12 +43,81 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Income_text" />
 
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="57dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/Enter"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/Expense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="#B8E1DD"
+            android:text="Expense"
+            android:textColor="#B8E1DD"
+            android:textSize="40sp" />
+
+        <RadioButton
+            android:id="@+id/Income"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="#B8E1DD"
+            android:text="Income"
+            android:textColor="#B8E1DD"
+            android:textSize="40sp" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/Date_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="69sp"
+        android:layout_marginTop="4dp"
+        android:width="270dp"
+        android:ems="10"
+        android:hint="Select Date"
+        android:inputType="none"
+        android:textColor="#B8E1DD"
+        android:textColorHint="#708886"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/Date_to_be_Recieved"
+        app:layout_constraintTop_toBottomOf="@+id/Income_text" />
+
+    <TextView
+        android:id="@+id/Income_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:text="Income:"
+        android:textColor="#B8E1DD"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Month_name" />
+
+    <EditText
+        android:id="@+id/Income_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="69sp"
+        android:layout_marginTop="128dp"
+        android:width="230dp"
+        android:ems="10"
+        android:hint="1,000"
+        android:inputType="number"
+        android:textColor="#B8E1DD"
+        android:textColorHint="#708886"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/Income_text"
+        app:layout_constraintTop_toBottomOf="@+id/Month_name" />
+
     <Button
         android:id="@+id/Return_button"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="163dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginBottom="72dp"
         android:layout_weight="1"
         android:width="75dp"
         android:gravity="center"
@@ -57,7 +127,34 @@
         android:text="Return"
         android:textAlignment="gravity"
         android:textSize="19sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Date_to_be_Recieved" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/Enter"
+        android:layout_width="200dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginBottom="16dp"
+        android:text="Enter"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toTopOf="@+id/Return_button"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="wrap_content"
+        android:layout_height="69sp"
+        android:layout_marginTop="64dp"
+        android:width="270dp"
+        android:ems="10"
+        android:gravity="bottom"
+        android:hint="Salary"
+        android:inputType="text"
+        android:textColor="#B8E1DD"
+        android:textColorHint="#708886"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/Budget_Name"
+        app:layout_constraintTop_toBottomOf="@+id/Month_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

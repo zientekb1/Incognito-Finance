@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#505050"
+    android:background="#062925"
     android:textAlignment="textEnd"
     tools:context=".MainActivity">
 
@@ -94,46 +94,26 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="410dp"
-        android:layout_height="679dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:background="#062925"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settings_icon">
-
-        <Button
-            android:id="@+id/Add_Income"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:height="70dp"
-            android:backgroundTint="#3A9188"
-            android:text="Add_Income"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/Add_Expense"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:height="70dp"
-            android:backgroundTint="#3A9188"
-            android:text="Add_Expense"
-            android:textColor="#911A1A"
-            android:textSize="20sp" />
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/Add_Budget_or_Expense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="71dp"
+        android:layout_marginBottom="40dp"
+        android:layout_weight="1"
+        android:height="70dp"
+        android:backgroundTint="#3A9188"
+        android:text="Add Income or Expense"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/Amount_Saved"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/Amount_Saved"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="560dp"
+        android:layout_marginBottom="31dp"
         android:height="60dp"
         android:background="#044A42"
         android:gravity="center"
@@ -143,9 +123,7 @@
         android:textColorHint="#044A42"
         android:textColorLink="#044A42"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

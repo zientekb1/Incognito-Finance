@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        add_income_button = findViewById(R.id.Add_Income);
+        add_income_button = findViewById(R.id.Add_Budget_or_Expense);
         add_income_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
