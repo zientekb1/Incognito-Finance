@@ -10,56 +10,6 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/Budget_Input_4"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="300dp"
-        android:layout_marginBottom="370dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/Budget_Input_2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="170dp"
-        android:layout_marginBottom="500dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/Budget_Input_1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="120dp"
-        android:layout_marginBottom="560dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/Budget_Input_3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="233dp"
-        android:layout_marginBottom="430dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/settings_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -98,8 +48,8 @@
         android:id="@+id/Add_Budget_or_Expense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="71dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginBottom="24dp"
         android:layout_weight="1"
         android:height="70dp"
         android:backgroundTint="#3A9188"
@@ -125,5 +75,29 @@
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ListView
+        android:id="@+id/Name_list"
+        android:layout_width="410dp"
+        android:layout_height="478dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:cacheColorHint="#B8E1DD"
+        android:foregroundTint="#B8E1DD"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_icon" />
+
+    <TextView
+        android:id="@+id/amount_saved_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="35dp"
+        android:height="49sp"
+        android:gravity="center"
+        android:textColor="#B8E1DD"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/Amount_Saved" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
