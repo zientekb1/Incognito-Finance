@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
     TextView amount_saved_num;
     double amount_total = 0.0;
     SharedPreferences sharedPreferences;
-    public static final String AMOUNT_TOTAL_KEY = "amount_total";
+    public static String AMOUNT_TOTAL_KEY = "amount_total";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         show = findViewById(R.id.Name_list);
@@ -39,11 +38,13 @@ public class MainActivity extends AppCompatActivity {
         add_income_button = findViewById(R.id.Add_Budget_or_Expense);
         add_income_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                // Open the user_input_info activity and pass the amount_total value
                 Intent intent = new Intent(MainActivity.this, user_input_info.class);
                 intent.putExtra("amount_total", amount_total);
                 startActivity(intent);
             }
         });
+
         // Retrieve the values from the Intent
         Intent intent = getIntent();
         if (intent != null) {
@@ -53,25 +54,26 @@ public class MainActivity extends AppCompatActivity {
 
             // Add name, income, and date to the addArray ArrayList
             addArray.add(name + ": " + income + " (" + date + ")");
-
-            CustomArrayAdapter adapter = new CustomArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, addArray);
-            show.setAdapter(adapter);
         }
+
+        // Create and set the adapter outside the if statement to handle both cases
+        CustomArrayAdapter adapter = new CustomArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, addArray);
+        show.setAdapter(adapter);
     }
 
-    private class CustomArrayAdapter extends ArrayAdapter<String> {
+    class CustomArrayAdapter extends ArrayAdapter<String> {
         public CustomArrayAdapter(MainActivity context, int resource, ArrayList<String> items) {
             super(context, resource, items);
         }
 
-        @Override
         public View getView(int position, View convertView, android.view.ViewGroup parent) {
             View view = super.getView(position, convertView, parent);
 
-            // Set the text color to #B8E1DD
+            // Set the text color
             TextView textView = (TextView) view.findViewById(android.R.id.text1);
             textView.setTextColor(Color.parseColor("#B8E1DD"));
-
+            // Set the font size
+            textView.setTextSize(30);
             return view;
         }
     }

@@ -9,47 +9,42 @@
     android:textAlignment="textEnd"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/settings_icon"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/Icognito_Finance"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:height="70dp"
+        android:background="#044A42"
+        android:backgroundTint="#044A42"
+        android:gravity="center"
+        android:text="Icognito Finance"
+        android:textAlignment="gravity"
+        android:textColor="#B8E1DD"
+        android:textColorHint="#044A42"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:contentDescription="Gear"
-            android:scaleType="centerInside"
-            android:textAlignment="gravity"
-            app:background="@drawable/computer_g47aa8b6cd_640"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/Icognito_Finance"
-            android:layout_width="360dp"
-            android:layout_height="match_parent"
-            android:background="#044A42"
-            android:backgroundTint="#044A42"
-            android:gravity="center"
-            android:text="Icognito Finance"
-            android:textAlignment="gravity"
-            android:textColor="#B8E1DD"
-            android:textColorHint="#044A42"
-            android:textSize="25sp" />
-
-    </LinearLayout>
+    <ImageButton
+        android:id="@+id/Settings_icon"
+        android:layout_width="64dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
+        android:foregroundGravity="center"
+        android:minWidth="70dp"
+        app:layout_constraintBottom_toTopOf="@+id/Name_list"
+        app:layout_constraintStart_toStartOf="@+id/Icognito_Finance"
+        app:srcCompat="@drawable/settings_icon" />
 
     <Button
         android:id="@+id/Add_Budget_or_Expense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="20dp"
         android:layout_weight="1"
         android:height="70dp"
         android:backgroundTint="#3A9188"
@@ -81,11 +76,10 @@
         android:layout_width="410dp"
         android:layout_height="478dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
         android:cacheColorHint="#B8E1DD"
         android:foregroundTint="#B8E1DD"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settings_icon" />
+        app:layout_constraintTop_toBottomOf="@+id/Icognito_Finance" />
 
     <TextView
         android:id="@+id/amount_saved_num"
