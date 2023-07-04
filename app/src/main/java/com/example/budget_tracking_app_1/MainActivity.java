@@ -22,9 +22,10 @@ public class MainActivity extends AppCompatActivity {
     double amount_total = 0.0;
     SharedPreferences sharedPreferences;
     public static String AMOUNT_TOTAL_KEY = "amount_total";
+    public static int REQUEST_CODE_USER_INPUT = 1;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         show = findViewById(R.id.Name_list);
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 // Open the user_input_info activity and pass the amount_total value
                 Intent intent = new Intent(MainActivity.this, user_input_info.class);
                 intent.putExtra("amount_total", amount_total);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE_USER_INPUT);
             }
         });
 
@@ -59,6 +60,23 @@ public class MainActivity extends AppCompatActivity {
         // Create and set the adapter outside the if statement to handle both cases
         CustomArrayAdapter adapter = new CustomArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, addArray);
         show.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE_USER_INPUT && resultCode == RESULT_OK) {
+            // Retrieve the updated addArray from the result Intent
+            ArrayList<String> updatedArray = data.getStringArrayListExtra("updatedArray");
+
+            // Update the addArray in MainActivity with the updatedArray
+            addArray.addAll(updatedArray);
+
+            // Update the ListView adapter with the new addArray
+            CustomArrayAdapter adapter = new CustomArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, addArray);
+            show.setAdapter(adapter);
+        }
     }
 
     class CustomArrayAdapter extends ArrayAdapter<String> {

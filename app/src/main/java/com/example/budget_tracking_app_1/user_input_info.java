@@ -12,7 +12,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class user_input_info extends AppCompatActivity {
@@ -57,9 +59,9 @@ public class user_input_info extends AppCompatActivity {
         return_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Return to the main activity
-                Intent intent = new Intent(user_input_info.this, MainActivity.class);
-                startActivity(intent);
+                // Return to the main activity without any data
+                setResult(RESULT_CANCELED);
+                finish();
             }
         });
 
@@ -74,8 +76,17 @@ public class user_input_info extends AppCompatActivity {
             public void onClick(View v) {
                 // Get user input values
                 String name = name_text.getText().toString();
-                double income = Double.parseDouble(income_text.getText().toString());
+                String incomeStr = income_text.getText().toString();
                 String date = date_edit_text.getText().toString();
+
+                // Check if any of the fields are empty
+                if (name.isEmpty() || incomeStr.isEmpty() || date.isEmpty()) {
+                    // Display a toast message indicating that all fields are required
+                    Toast.makeText(user_input_info.this, "All fields are required", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                double income = Double.parseDouble(incomeStr);
                 int radioId = radioGroup.getCheckedRadioButtonId();
                 radioButton = findViewById(radioId);
 
@@ -95,12 +106,12 @@ public class user_input_info extends AppCompatActivity {
                 editor.apply();
 
                 // Return the data to the main activity
-                Intent intent = new Intent(user_input_info.this, MainActivity.class);
-                intent.putExtra("name", name);
-                intent.putExtra("income", income);
-                intent.putExtra("date", date);
-                intent.putExtra("amount_total", amount_total);
-                startActivity(intent);
+                Intent intent = new Intent();
+                ArrayList<String> updatedArray = new ArrayList<>();
+                updatedArray.add(name + ": " + income + " (" + date + ")");
+                intent.putStringArrayListExtra("updatedArray", updatedArray);
+                setResult(RESULT_OK, intent);
+                finish();
             }
         });
     }
