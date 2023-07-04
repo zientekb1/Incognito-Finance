@@ -59,8 +59,10 @@ public class user_input_info extends AppCompatActivity {
         return_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Return to the main activity without any data
-                setResult(RESULT_CANCELED);
+                // Return the data to the main activity
+                Intent intent = new Intent();
+                intent.putExtra("amountTotal", amount_total);
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });
@@ -95,6 +97,11 @@ public class user_input_info extends AppCompatActivity {
 
                 // Update the total amount based on the selected radio button
                 if (radioId == R.id.Expense_button) {
+                    // Check if the expense is greater than the current amount total
+                    if (income > amount_total) {
+                        Toast.makeText(user_input_info.this, "Expense exceeds current amount total", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     amount_total -= income;
                 } else if (radioId == R.id.Income_button) {
                     amount_total += income;
@@ -107,9 +114,10 @@ public class user_input_info extends AppCompatActivity {
 
                 // Return the data to the main activity
                 Intent intent = new Intent();
-                ArrayList<String> updatedArray = new ArrayList<>();
-                updatedArray.add(name + ": " + income + " (" + date + ")");
-                intent.putStringArrayListExtra("updatedArray", updatedArray);
+                intent.putExtra("name", name);
+                intent.putExtra("income", income);
+                intent.putExtra("date", date);
+                intent.putExtra("amountTotal", amount_total);
                 setResult(RESULT_OK, intent);
                 finish();
             }

@@ -39,9 +39,8 @@ public class MainActivity extends AppCompatActivity {
         add_income_button = findViewById(R.id.Add_Budget_or_Expense);
         add_income_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Open the user_input_info activity and pass the amount_total value
+                // Open the user_input_info activity
                 Intent intent = new Intent(MainActivity.this, user_input_info.class);
-                intent.putExtra("amount_total", amount_total);
                 startActivityForResult(intent, REQUEST_CODE_USER_INPUT);
             }
         });
@@ -52,14 +51,24 @@ public class MainActivity extends AppCompatActivity {
             String name = intent.getStringExtra("name");
             double income = intent.getDoubleExtra("income", 0.0);
             String date = intent.getStringExtra("date");
+            double updatedAmountTotal = intent.getDoubleExtra("amountTotal", 0.0);
+
+            // Update the amount saved text view
+            amount_saved_num.setText(String.valueOf(updatedAmountTotal));
+
+            // Update the total amount in SharedPreferences
+            amount_total = updatedAmountTotal;
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putFloat(AMOUNT_TOTAL_KEY, (float) amount_total);
+            editor.apply();
 
             // Add name, income, and date to the addArray ArrayList
             addArray.add(name + ": " + income + " (" + date + ")");
-        }
 
-        // Create and set the adapter outside the if statement to handle both cases
-        CustomArrayAdapter adapter = new CustomArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, addArray);
-        show.setAdapter(adapter);
+            // Update the ListView adapter with the new addArray
+            CustomArrayAdapter adapter = new CustomArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, addArray);
+            show.setAdapter(adapter);
+        }
     }
 
     @Override
@@ -68,10 +77,22 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == REQUEST_CODE_USER_INPUT && resultCode == RESULT_OK) {
             // Retrieve the updated addArray from the result Intent
-            ArrayList<String> updatedArray = data.getStringArrayListExtra("updatedArray");
+            String name = data.getStringExtra("name");
+            double income = data.getDoubleExtra("income", 0.0);
+            String date = data.getStringExtra("date");
+            double updatedAmountTotal = data.getDoubleExtra("amountTotal", 0.0);
 
-            // Update the addArray in MainActivity with the updatedArray
-            addArray.addAll(updatedArray);
+            // Update the amount saved text view
+            amount_saved_num.setText(String.valueOf(updatedAmountTotal));
+
+            // Update the total amount in SharedPreferences
+            amount_total = updatedAmountTotal;
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putFloat(AMOUNT_TOTAL_KEY, (float) amount_total);
+            editor.apply();
+
+            // Add name, income, and date to the addArray ArrayList
+            addArray.add(name + ": " + income + " (" + date + ")");
 
             // Update the ListView adapter with the new addArray
             CustomArrayAdapter adapter = new CustomArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, addArray);
