@@ -97,11 +97,6 @@ public class user_input_info extends AppCompatActivity {
 
                 // Update the total amount based on the selected radio button
                 if (radioId == R.id.Expense_button) {
-                    // Check if the expense is greater than the current amount total
-                    if (income > amount_total) {
-                        Toast.makeText(user_input_info.this, "Expense exceeds current amount total", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
                     amount_total -= income;
                 } else if (radioId == R.id.Income_button) {
                     amount_total += income;
