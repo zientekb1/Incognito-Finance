@@ -63,11 +63,19 @@ public class MainActivity extends AppCompatActivity {
             editor.apply();
 
             // Add name, income, and date to the addArray ArrayList
-            addArray.add(name + ": " + income + " (" + date + ")");
+            if (name != null && date != null){
+                addArray.add(name + ": " + income + " (" + date + ")");
+
+                // Update the ListView adapter with the new addArray
+                CustomArrayAdapter adapter = new CustomArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, addArray);
+                show.setAdapter(adapter);
+            }
+            // Add name, income, and date to the addArray ArrayList
+            //addArray.add(name + ": " + income + " (" + date + ")");
 
             // Update the ListView adapter with the new addArray
-            CustomArrayAdapter adapter = new CustomArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, addArray);
-            show.setAdapter(adapter);
+            //CustomArrayAdapter adapter = new CustomArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, addArray);
+            //show.setAdapter(adapter);
         }
     }
 
@@ -92,11 +100,14 @@ public class MainActivity extends AppCompatActivity {
             editor.apply();
 
             // Add name, income, and date to the addArray ArrayList
-            addArray.add(name + ": " + income + " (" + date + ")");
+            if (name != null && date != null){
+                addArray.add(name + ": " + income + " (" + date + ")");
 
-            // Update the ListView adapter with the new addArray
-            CustomArrayAdapter adapter = new CustomArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, addArray);
-            show.setAdapter(adapter);
+                // Update the ListView adapter with the new addArray
+                CustomArrayAdapter adapter = new CustomArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, addArray);
+                show.setAdapter(adapter);
+            }
+
         }
     }
 
